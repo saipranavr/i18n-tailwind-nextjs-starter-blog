@@ -1,8 +1,6 @@
 const fs = require('fs')
 const globby = require('globby')
-const path = require('path')
 const prettier = require('prettier')
-const { cpuUsage } = require('process')
 const siteMetadata = require('../data/siteMetadata')
 const i18nConfig = require('../i18n.json')
 
@@ -10,10 +8,12 @@ const i18nConfig = require('../i18n.json')
   const prettierConfig = await prettier.resolveConfig('./.prettierrc.js')
   const pages = await globby([
     'pages/*.js',
+    'pages/*.tsx',
     'data/blog/**/*.mdx',
     'data/blog/**/*.md',
     'public/tags/**/*.xml',
     '!pages/_*.js',
+    '!pages/_*.tsx',
     '!pages/api',
   ])
 
